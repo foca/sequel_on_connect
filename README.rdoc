@@ -1,0 +1,26 @@
+= Sequel.on_connect
+
+Run code immediately after a database connection has been established.
+
+== How to use?
+
+    require "sequel"
+    require "sequel_on_connect"
+
+    Sequel.on_connect do
+      require "my_models"
+    end
+    
+    Sequel.connect("sqlite::memory:")
+
+== Why?
+
+`Sequel` requires you to establish a connection *before* loading your
+model classes. If, for some reason, you can't establish a connection
+before loading your classes, then this will allow you to require them
+immediately after you connect to the database.
+
+== Credits
+
+Author::  Nicolás Sanguinetti
+License:: Released under an MIT license. Check LICENSE for details.
